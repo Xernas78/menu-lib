@@ -62,7 +62,6 @@ public class ItemBuilder {
         Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
             Player player = (Player) inventoryClickEvent.getWhoClicked();
             MenuLib.setLastMenu(player, itemMenu);
-            player.closeInventory();
             menu.open(player);
         };
         setOnClick(clickEventConsumer);

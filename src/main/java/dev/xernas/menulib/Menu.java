@@ -55,7 +55,6 @@ public abstract class Menu implements InventoryHolder {
 
     public void back(Player player) {
         Menu lastMenu = MenuLib.getLastMenu(player);
-        player.closeInventory();
         lastMenu.open(player);
     }
 

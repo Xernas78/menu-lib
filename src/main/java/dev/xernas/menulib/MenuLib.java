@@ -2,6 +2,7 @@ package dev.xernas.menulib;
 
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -16,7 +17,7 @@ import java.util.function.Consumer;
 public final class MenuLib implements Listener {
 
     private static NamespacedKey itemIdKey;
-    private static Map<UUID, Menu> lastMenu;
+    private static final Map<Player, Menu> lastMenu = new HashMap<>();
     private static final Map<Menu, Map<ItemStack, Consumer<InventoryClickEvent>>> itemClickEvents = new HashMap<>();
 
     private MenuLib(JavaPlugin plugin) {
@@ -61,11 +62,11 @@ public final class MenuLib implements Listener {
         return itemIdKey;
     }
 
-    public static void setLastMenu(UUID playerUUID, Menu menu) {
-        lastMenu.put(playerUUID, menu);
+    public static void setLastMenu(Player player, Menu menu) {
+        lastMenu.put(player, menu);
     }
 
-    public static Menu getLastMenu(UUID playerUUID) {
-        return lastMenu.get(playerUUID);
+    public static Menu getLastMenu(Player player) {
+        return lastMenu.get(player);
     }
 }

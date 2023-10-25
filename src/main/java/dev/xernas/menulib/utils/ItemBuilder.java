@@ -61,11 +61,19 @@ public class ItemBuilder {
     public ItemBuilder setNextMenu(Menu menu) {
         Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
             Player player = (Player) inventoryClickEvent.getWhoClicked();
+            MenuLib.setLastMenu(player, itemMenu);
             player.closeInventory();
             menu.open(player);
-            MenuLib.setLastMenu(player.getUniqueId(), itemMenu);
         };
-        MenuLib.setItemClickEvent(itemMenu, item, clickEventConsumer);
+        setOnClick(clickEventConsumer);
+        return this;
+    }
+
+    public ItemBuilder setBackButton() {
+        Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
+            itemMenu.back((Player) inventoryClickEvent.getWhoClicked());
+        };
+        setOnClick(clickEventConsumer);
         return this;
     }
 

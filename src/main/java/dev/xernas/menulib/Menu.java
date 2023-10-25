@@ -53,9 +53,8 @@ public abstract class Menu implements InventoryHolder {
         return false;
     }
 
-    public void back(UUID playerUUID) {
-        Menu lastMenu = MenuLib.getLastMenu(playerUUID);
-        Player player = Objects.requireNonNull(Bukkit.getPlayer(playerUUID));
+    public void back(Player player) {
+        Menu lastMenu = MenuLib.getLastMenu(player);
         player.closeInventory();
         lastMenu.open(player);
     }

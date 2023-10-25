@@ -36,15 +36,19 @@ public final class MenuLib implements Listener {
             if (e.getCurrentItem() == null) {
                 return;
             }
-            itemClickEvents.forEach((menu1, itemStackConsumerMap) -> {
-                if (menu1.equals(menu)) {
-                    itemStackConsumerMap.forEach((itemStack, inventoryClickEventConsumer) -> {
-                        if (itemStack.equals(e.getCurrentItem())) {
-                            inventoryClickEventConsumer.accept(e);
-                        }
-                    });
-                }
-            });
+            try {
+                itemClickEvents.forEach((menu1, itemStackConsumerMap) -> {
+                    if (menu1.equals(menu)) {
+                        itemStackConsumerMap.forEach((itemStack, inventoryClickEventConsumer) -> {
+                            if (itemStack.equals(e.getCurrentItem())) {
+                                inventoryClickEventConsumer.accept(e);
+                            }
+                        });
+                    }
+                });
+            } catch (Exception ignore) {
+
+            }
             menu.onInventoryClick(e);
         }
     }

@@ -17,9 +17,13 @@ public final class MenuLib implements Listener {
     private static NamespacedKey itemIdKey;
     private static final Map<Menu, Map<ItemStack, Consumer<InventoryClickEvent>>> itemClickEvents = new HashMap<>();
 
-    public MenuLib(JavaPlugin plugin) {
+    private MenuLib(JavaPlugin plugin) {
         Bukkit.getPluginManager().registerEvents(this, plugin);
         itemIdKey = new NamespacedKey(plugin, "itemId");
+    }
+
+    public static void init(JavaPlugin plugin) {
+        new MenuLib(plugin);
     }
 
     @EventHandler

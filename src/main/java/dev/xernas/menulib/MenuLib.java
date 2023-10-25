@@ -36,6 +36,9 @@ public final class MenuLib implements Listener {
             if (e.getCurrentItem() == null) {
                 return;
             }
+
+            menu.onInventoryClick(e);
+
             try {
                 itemClickEvents.forEach((menu1, itemStackConsumerMap) -> {
                     if (menu1.equals(menu)) {
@@ -49,7 +52,6 @@ public final class MenuLib implements Listener {
             } catch (Exception ignore) {
 
             }
-            menu.onInventoryClick(e);
         }
     }
 

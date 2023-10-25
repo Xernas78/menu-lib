@@ -10,11 +10,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.function.Consumer;
 
 public final class MenuLib implements Listener {
 
     private static NamespacedKey itemIdKey;
+    private static Map<UUID, Menu> lastMenu;
     private static final Map<Menu, Map<ItemStack, Consumer<InventoryClickEvent>>> itemClickEvents = new HashMap<>();
 
     private MenuLib(JavaPlugin plugin) {
@@ -57,5 +59,13 @@ public final class MenuLib implements Listener {
 
     public static NamespacedKey getItemIdKey() {
         return itemIdKey;
+    }
+
+    public static void setLastMenu(UUID playerUUID, Menu menu) {
+        lastMenu.put(playerUUID, menu);
+    }
+
+    public static Menu getLastMenu(UUID playerUUID) {
+        return lastMenu.get(playerUUID);
     }
 }

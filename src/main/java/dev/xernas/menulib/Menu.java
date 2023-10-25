@@ -18,6 +18,7 @@ import java.io.Console;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.UUID;
 
 public abstract class Menu implements InventoryHolder {
 
@@ -50,6 +51,13 @@ public abstract class Menu implements InventoryHolder {
             return Objects.equals(dataContainer.get(MenuLib.getItemIdKey(), PersistentDataType.STRING), itemId);
         }
         return false;
+    }
+
+    public void back(UUID playerUUID) {
+        Menu lastMenu = MenuLib.getLastMenu(playerUUID);
+        Player player = Objects.requireNonNull(Bukkit.getPlayer(playerUUID));
+        player.closeInventory();
+        lastMenu.open(player);
     }
 
     @NotNull

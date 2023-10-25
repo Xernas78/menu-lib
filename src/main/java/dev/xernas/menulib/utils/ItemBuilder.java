@@ -63,6 +63,7 @@ public class ItemBuilder {
             Player player = (Player) inventoryClickEvent.getWhoClicked();
             player.closeInventory();
             menu.open(player);
+            MenuLib.setLastMenu(player.getUniqueId(), itemMenu);
         };
         MenuLib.setItemClickEvent(itemMenu, item, clickEventConsumer);
         return this;

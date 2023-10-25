@@ -26,12 +26,22 @@ public abstract class Menu implements InventoryHolder {
     public abstract String getName();
     @NotNull
     public abstract Integer getSize();
+
+    public abstract String getPermission();
+    public abstract String getNoPermissionMessage();
+
     public abstract void onInventoryClick(InventoryClickEvent e);
 
     @NotNull
     public abstract Map<Integer, ItemStack> getContent();
 
     public void open(Player player) {
+        if (getPermission() != null && !getPermission().isEmpty()) {
+            if (!player.hasPermission(getPermission())) {
+                player.sendMessage(getNoPermissionMessage());
+                return;
+            }
+        }
         Inventory inventory = getInventory();
         getContent().forEach(inventory::setItem);
         player.openInventory(inventory);

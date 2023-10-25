@@ -26,6 +26,11 @@ public class ItemBuilder {
         this.itemMenu = itemMenu;
     }
 
+    public ItemBuilder(Menu itemMenu, ItemStack item) {
+        this.item = item;
+        this.itemMenu = itemMenu;
+    }
+
     public ItemBuilder setDisplayName(String name) {
         ItemMeta im = Objects.requireNonNull(item.getItemMeta());
         im.setDisplayName(name);

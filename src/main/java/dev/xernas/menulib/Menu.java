@@ -11,6 +11,7 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.checkerframework.checker.units.qual.N;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Console;
@@ -25,6 +26,8 @@ public abstract class Menu implements InventoryHolder {
     @NotNull
     public abstract Integer getSize();
     public abstract void onInventoryClick(InventoryClickEvent e);
+
+    @NotNull
     public abstract Map<Integer, ItemStack> getContent();
 
     public void open(Player player) {

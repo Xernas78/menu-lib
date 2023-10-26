@@ -62,7 +62,7 @@ public class ItemBuilder {
         Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
             Player player = (Player) inventoryClickEvent.getWhoClicked();
             MenuLib.setLastMenu(player, itemMenu);
-            menu.open(player);
+            menu.open();
         };
         setOnClick(clickEventConsumer);
         return this;
@@ -70,7 +70,7 @@ public class ItemBuilder {
 
     public ItemBuilder setBackButton() {
         Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
-            itemMenu.back((Player) inventoryClickEvent.getWhoClicked());
+            itemMenu.back();
         };
         setOnClick(clickEventConsumer);
         return this;

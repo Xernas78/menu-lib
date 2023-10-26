@@ -22,6 +22,12 @@ import java.util.UUID;
 
 public abstract class Menu implements InventoryHolder {
 
+    private final Player owner;
+
+    public Menu(Player owner) {
+        this.owner = owner;
+    }
+
     @NotNull
     public abstract String getName();
     @NotNull
@@ -35,16 +41,16 @@ public abstract class Menu implements InventoryHolder {
     @NotNull
     public abstract Map<Integer, ItemStack> getContent();
 
-    public void open(Player player) {
+    public void open() {
         if (getPermission() != null && !getPermission().isEmpty()) {
-            if (!player.hasPermission(getPermission())) {
-                player.sendMessage(getNoPermissionMessage());
+            if (!owner.hasPermission(getPermission())) {
+                owner.sendMessage(getNoPermissionMessage());
                 return;
             }
         }
         Inventory inventory = getInventory();
         getContent().forEach(inventory::setItem);
-        player.openInventory(inventory);
+        owner.openInventory(inventory);
     }
 
     public Map<Integer, ItemStack> fill(Material material) {
@@ -63,9 +69,9 @@ public abstract class Menu implements InventoryHolder {
         return false;
     }
 
-    public void back(Player player) {
-        Menu lastMenu = MenuLib.getLastMenu(player);
-        lastMenu.open(player);
+    public void back() {
+        Menu lastMenu = MenuLib.getLastMenu(owner);
+        lastMenu.open();
     }
 
     @NotNull

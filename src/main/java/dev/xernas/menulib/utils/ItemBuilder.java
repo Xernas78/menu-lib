@@ -2,6 +2,8 @@ package dev.xernas.menulib.utils;
 
 import dev.xernas.menulib.Menu;
 import dev.xernas.menulib.MenuLib;
+import dev.xernas.menulib.PaginatedMenu;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -22,8 +24,7 @@ public class ItemBuilder {
     private final Menu itemMenu;
 
     public ItemBuilder(Menu itemMenu, Material material) {
-        item = new ItemStack(material);
-        this.itemMenu = itemMenu;
+        this(itemMenu, new ItemStack(material));
     }
 
     public ItemBuilder(Menu itemMenu, ItemStack item) {
@@ -48,7 +49,7 @@ public class ItemBuilder {
     public ItemBuilder setItemId(String itemId) {
         ItemMeta im = Objects.requireNonNull(item.getItemMeta());
         PersistentDataContainer dataContainer = im.getPersistentDataContainer();
-        dataContainer.set(MenuLib.getItemIdKey(), PersistentDataType.STRING, itemId);
+        dataContainer.set(MenuLib.getItemIdKey(), PersistentDataType.STRING, itemId.toLowerCase());
         item.setItemMeta(im);
         return this;
     }
@@ -68,9 +69,35 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder setCloseButton() {
+        Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> itemMenu.getOwner().closeInventory();
+        setOnClick(clickEventConsumer);
+        return this;
+    }
+
     public ItemBuilder setBackButton() {
+        Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> itemMenu.back();
+        setOnClick(clickEventConsumer);
+        return this;
+    }
+
+    public ItemBuilder setNextPageButton() {
         Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
-            itemMenu.back();
+            if (itemMenu instanceof PaginatedMenu menu) {
+                menu.setPage(menu.isLastPage() ? menu.getPage() : menu.getPage() + 1);
+                menu.open();
+            }
+        };
+        setOnClick(clickEventConsumer);
+        return this;
+    }
+
+    public ItemBuilder setPreviousPageButton() {
+        Consumer<InventoryClickEvent> clickEventConsumer = inventoryClickEvent -> {
+            if (itemMenu instanceof PaginatedMenu menu) {
+                menu.setPage(menu.getPage() == 0 ? 0 : menu.getPage() - 1);
+                menu.open();
+            }
         };
         setOnClick(clickEventConsumer);
         return this;

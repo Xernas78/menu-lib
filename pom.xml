@@ -16,6 +16,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>Menu Lib</name>
+            <url>https://maven.pkg.github.com/Xernas78/menu-lib</url>
+        </repository>
+    </distributionManagement>
+
     <build>
         <plugins>
             <plugin>

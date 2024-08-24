@@ -25,12 +25,21 @@ public abstract class PaginatedMenu extends Menu {
         super(owner);
     }
 
+    /**
+     * @return The border's material
+     * @see Material
+     */
     @Nullable
     public abstract Material getBorderMaterial();
 
     @NotNull
     public abstract List<Integer> getStaticSlots();
 
+    /**
+     * @return ListStack of items that will be displayed in the paginated menu
+     * @see ItemStack
+     * @see List
+     */
     @NotNull
     public abstract List<ItemStack> getItems();
 
@@ -73,13 +82,25 @@ public abstract class PaginatedMenu extends Menu {
     public final @NotNull InventorySize getInventorySize() {
         return InventorySize.LARGEST;
     }
+
+    /**
+     * Change the menu page
+     * @param page Menu index
+     */
     public final void setPage(int page) {
         this.page = page;
     }
+
+    /**
+     * @return Current menu page
+     */
     public final int getPage() {
         return page;
     }
 
+    /**
+     * @return True if it's the last page of the menu
+     */
     public final boolean isLastPage() {
         return page == numberOfPages;
     }

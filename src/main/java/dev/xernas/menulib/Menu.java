@@ -25,23 +25,42 @@ public abstract class Menu implements InventoryHolder {
         this.owner = owner;
     }
 
+    /**
+     * Return the Menu name
+     * @return Inventory name
+     */
     @NotNull
     public abstract String getName();
+
+    /**
+     * Return the menu size
+     * @return Inventory Size
+     * @see InventorySize
+     */
     @NotNull
     public abstract InventorySize getInventorySize();
 
     public String getPermission() {
         return null;
     }
+
     public String getNoPermissionMessage() {
         return "";
     }
 
+    /**
+     Trigger when the player click on a slot in the menu
+     @param e The InventoryClickEvent
+     @see InventoryClickEvent
+     */
     public abstract void onInventoryClick(InventoryClickEvent e);
 
     @NotNull
     public abstract Map<Integer, ItemStack> getContent();
 
+    /**
+     * Open the menu for the menu's owner
+    */
     public final void open() {
         if (getPermission() != null && !getPermission().isEmpty()) {
             if (!owner.hasPermission(getPermission())) {
@@ -71,17 +90,27 @@ public abstract class Menu implements InventoryHolder {
         return false;
     }
 
+    /**
+     * Open the last menu opened by the owner
+     */
     public final void back() {
         Menu lastMenu = MenuLib.getLastMenu(owner);
         lastMenu.open();
     }
 
+    /**
+     * @return Menu
+     * @see Inventory
+     */
     @NotNull
     @Override
     public final Inventory getInventory() {
         return Bukkit.createInventory(this, getInventorySize().getSize(), getName());
     }
 
+    /**
+     * @return Menu owner
+     */
     public final Player getOwner() {
         return owner;
     }

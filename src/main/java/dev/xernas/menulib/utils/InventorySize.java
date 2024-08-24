@@ -1,5 +1,8 @@
 package dev.xernas.menulib.utils;
 
+/**
+ * List of possible Menu Size from 9 to 54
+ */
 public enum InventorySize {
 
     SMALLEST(9),

@@ -1,6 +1,5 @@
 package dev.xernas.menulib;
 
-import dev.xernas.menulib.utils.InventorySize;
 import dev.xernas.menulib.utils.ItemUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -44,7 +43,7 @@ public abstract class PaginatedMenu extends Menu {
             map.put(staticSlot, ItemUtils.createItem(" ", getBorderMaterial() == null ? Material.AIR : getBorderMaterial()));
         }
         List<Integer> staticSlots = removeRecurringIntegers(getStaticSlots());
-        int maxItems = getInventorySize().getSize() - staticSlots.size();
+        int maxItems = getInventorySize().get() - staticSlots.size();
         numberOfPages = (int) Math.ceil((double) getItems().size() / maxItems) - 1;
 
         // Pagination
@@ -70,8 +69,8 @@ public abstract class PaginatedMenu extends Menu {
     }
 
     @Override
-    public final @NotNull InventorySize getInventorySize() {
-        return InventorySize.LARGEST;
+    public final @NotNull Menu.Size getInventorySize() {
+        return Menu.Size.LARGEST;
     }
     public final void setPage(int page) {
         this.page = page;

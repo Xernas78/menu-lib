@@ -1,6 +1,5 @@
 package dev.xernas.menulib;
 
-import dev.xernas.menulib.utils.InventorySize;
 import dev.xernas.menulib.utils.ItemUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -28,7 +27,7 @@ public abstract class Menu implements InventoryHolder {
     @NotNull
     public abstract String getName();
     @NotNull
-    public abstract InventorySize getInventorySize();
+    public abstract Size getInventorySize();
 
     public String getPermission() {
         return null;
@@ -56,7 +55,7 @@ public abstract class Menu implements InventoryHolder {
 
     public final Map<Integer, ItemStack> fill(Material material) {
         Map<Integer, ItemStack> map = new HashMap<>();
-        for (int i = 0; i < getInventorySize().getSize(); i++) {
+        for (int i = 0; i < getInventorySize().get(); i++) {
             ItemStack filler = ItemUtils.createItem(" ", material);
             map.put(i, filler);
         }
@@ -79,10 +78,30 @@ public abstract class Menu implements InventoryHolder {
     @NotNull
     @Override
     public final Inventory getInventory() {
-        return Bukkit.createInventory(this, getInventorySize().getSize(), getName());
+        return Bukkit.createInventory(this, getInventorySize().get(), getName());
     }
 
     public final Player getOwner() {
         return owner;
+    }
+
+    public enum Size {
+
+        SMALLEST(9),
+        SMALL(18),
+        NORMAL(27),
+        LARGE(36),
+        LARGER(45),
+        LARGEST(54);
+    
+        private final int size;
+    
+        Size(int size) {
+            this.size = size;
+        }
+    
+        public int get() {
+            return size;
+        }
     }
 }

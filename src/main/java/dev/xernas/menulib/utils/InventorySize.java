@@ -10,11 +10,21 @@ public enum InventorySize {
     LARGEST(54);
 
     private final int size;
-
+    
+    /**
+     * Constructs an InventorySize enum instance with the specified size.
+     *
+     * @param size the size of the inventory associated with this enum instance
+     */
     InventorySize(int size) {
         this.size = size;
     }
-
+    
+    /**
+     * Retrieves the size value associated with this enum instance.
+     *
+     * @return the size value of the inventory for this enum instance
+     */
     public int getSize() {
         return size;
     }

@@ -13,6 +13,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * {@code MenuLib} is a utility class designed to handle custom menus in a Bukkit/Spigot plugin environment.
+ * It provides functionality for managing menu interactions, associating click events with specific items,
+ * and handling player-menu associations.
+ * <p>
+ * This class is intended for use in creating interactive menus within Minecraft plugins,
+ * allowing developers to define custom behavior for item clicks within menus.
+ * <p>
+ * The {@code MenuLib} class implements the {@link Listener} interface to handle inventory-related events.
+ */
 public final class MenuLib implements Listener {
     
     private static NamespacedKey itemIdKey;

@@ -13,6 +13,10 @@ import org.bukkit.profile.PlayerProfile;
 import java.util.Objects;
 import java.util.UUID;
 
+/**
+ * Utility class for performing operations on {@link ItemStack}.
+ * Provides methods for creating items, checking item identifiers, and creating player skulls.
+ */
 public class ItemUtils {
     
     /**

@@ -13,6 +13,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * An abstract class representing a paginated menu for a player.
+ * This class extends the {@link Menu} class and provides the functionality
+ * to paginate items within an inventory-like user interface.
+ * PaginatedMenu is designed to manage a collection of items across multiple
+ * pages and offers methods to retrieve, update, and navigate through these pages.
+ */
 public abstract class PaginatedMenu extends Menu {
     
     private int page = 0;

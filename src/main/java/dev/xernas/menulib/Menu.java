@@ -17,6 +17,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * Represents an abstract Menu framework for managing custom player inventories.
+ * A menu is tied to a specific player and provides methods for customization,
+ * handling inventory interactions, and managing permissions.
+ */
 public abstract class Menu implements InventoryHolder {
 
     private final Player owner;

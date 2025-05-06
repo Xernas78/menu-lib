@@ -15,6 +15,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Consumer;
 
+/**
+ * The {@code ItemBuilder} class is a utility for creating and customizing {@link ItemStack} objects
+ * in a menu context. It provides methods to set item properties, handle click events, and manage
+ * metadata, making it easier to create interactive items within a menu system.
+ */
 public class ItemBuilder extends ItemStack {
     private final Menu itemMenu;
     private ItemMeta meta;

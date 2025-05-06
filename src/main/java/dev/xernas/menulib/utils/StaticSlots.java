@@ -4,6 +4,25 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * The StaticSlots class provides predefined static lists of integers representing
+ * various slot configurations and utility methods for managing and manipulating slot lists.
+ * <p>
+ * The predefined slot lists include:<br>
+ * - {@code NONE}: An empty list of slots.<br>
+ * - {@code MIDDLE_BUTTONS}: A predefined list of slots designated for middle buttons.<br>
+ * - {@code SPREAD_BUTTONS}: A predefined list of slots designated for spread buttons.<br>
+ * - {@code BOTTOM}: A predefined list of slots located at the bottom.<br>
+ * - {@code TOP}: A predefined list of slots located at the top.<br>
+ * - {@code RIGHT}: A predefined list of slots located on the right side.<br>
+ * - {@code LEFT}: A predefined list of slots located on the left side.<br>
+ * - {@code STANDARD}: A combined list of slots from RIGHT, LEFT, TOP, and BOTTOM with duplicate removal.
+ * <p>
+ * Utility methods provided include:<br>
+ * - combine: Combines two slot lists into one, ensuring no duplicates and filtering slots to a valid range.<br>
+ * - getStaticSlots: Creates a new list from specified slot integers.<br>
+ * - removeRecurringIntegers: Removes duplicate integers from a list and ensures numbers fall within a valid range.
+ */
 public class StaticSlots {
 
     public final static List<Integer> NONE = new ArrayList<>();

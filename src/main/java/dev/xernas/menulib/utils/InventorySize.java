@@ -1,5 +1,18 @@
 package dev.xernas.menulib.utils;
 
+/**
+ * Represents different inventory sizes that can be used for organizing game inventories.
+ * Each inventory size is associated with a specific numerical value representing the
+ * number of slots available in the inventory.
+ * <p>
+ * This enum provides a convenient way to define and manage various inventory sizes:<br>
+ * - {@code SMALLEST}: 9 slots<br>
+ * - {@code SMALL}: 18 slots<br>
+ * - {@code NORMAL}: 27 slots<br>
+ * - {@code LARGE}: 36 slots<br>
+ * - {@code LARGER}: 45 slots<br>
+ * - {@code LARGEST}: 54 slots<br>
+ */
 public enum InventorySize {
 
     SMALLEST(9),

@@ -9,7 +9,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -59,7 +58,7 @@ public class ItemUtils {
      * @param playerUUID the UUID of the player whose skull is to be created
      * @return an {@link ItemStack} representing the player's skull
      */
-    public static @Nullable ItemStack getPlayerSkull(UUID playerUUID) {
+    public static ItemStack getPlayerSkull(UUID playerUUID) {
         ItemStack skull = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta skullMeta = (SkullMeta) skull.getItemMeta();
         if (skullMeta != null) {

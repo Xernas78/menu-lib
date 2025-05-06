@@ -122,7 +122,11 @@ public class ItemBuilder extends ItemStack {
      *         for further customization of the item.
      */
     public ItemBuilder setOnClick(Consumer<InventoryClickEvent> e) {
-        MenuLib.setItemClickEvent(itemMenu, this, e);
+        try {
+            MenuLib.setItemClickEvent(itemMenu, this, e);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
         return this;
     }
     

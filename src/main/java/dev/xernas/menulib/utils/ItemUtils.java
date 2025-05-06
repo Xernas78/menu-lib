@@ -66,9 +66,8 @@ public class ItemUtils {
             PlayerProfile profile = Bukkit.createProfile(playerUUID);
             skullMeta.setPlayerProfile(profile);
             skull.setItemMeta(skullMeta);
-            return skull;
         }
-        return null;
+        return skull;
     }
 
 }

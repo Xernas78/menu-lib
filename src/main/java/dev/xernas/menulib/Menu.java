@@ -15,7 +15,9 @@ import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 import java.util.List;
@@ -53,11 +55,13 @@ public abstract class Menu implements InventoryHolder {
     public abstract String getName();
     
     /**
-     * Retrieves the textures of the menu.
+     * Retrieves the textures of the menu.<br><br>
+     *
+     * WARNING: This method requires PlaceholderAPI and ItemsAdder to be installed on the server.
      *
      * @return A {@link String} representing the texture of the menu
      */
-    public abstract String getTexture();
+    public abstract @Nullable String getTexture();
     
     /**
      * Retrieves the size of the inventory for the menu.
@@ -224,7 +228,8 @@ public abstract class Menu implements InventoryHolder {
     @NotNull
     @Override
     public final Inventory getInventory() {
-        String title = (getTexture() != null && ! getTexture().isEmpty()) && getTexture() != null && ! getTexture().isEmpty()
+        boolean pluginStatus = getPluginStatus("ItemsAdder") && getPluginStatus("PlaceholderAPI");
+        String title = pluginStatus && getTexture() != null && ! getTexture().isEmpty()
                 ? getTexture()
                 : getName();
         return Bukkit.createInventory(this, getInventorySize().getSize(), Component.text(title));
@@ -250,5 +255,10 @@ public abstract class Menu implements InventoryHolder {
      */
     public Player getOwner() {
         return owner;
+    }
+    
+    private boolean getPluginStatus(String name) {
+        Plugin plugin = Bukkit.getPluginManager().getPlugin(name);
+        return plugin != null && plugin.isEnabled();
     }
 }

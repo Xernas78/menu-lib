@@ -3,6 +3,7 @@ package dev.xernas.menulib.utils;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import dev.xernas.menulib.MenuLib;
 import io.papermc.paper.datacomponent.DataComponentTypes;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
@@ -27,11 +28,11 @@ public class ItemUtils {
      * @param material the material type of the item
      * @return the created ItemStack with the given name and material
      */
-    public static ItemStack createItem(String name, Material material) {
+    public static ItemStack createItem(Component name, Material material) {
         ItemStack itemStack = new ItemStack(material);
         ItemMeta meta = itemStack.getItemMeta();
         if (meta != null) {
-            meta.setDisplayName(name);
+            meta.displayName(name);
         }
         itemStack.setItemMeta(meta);
         return itemStack;

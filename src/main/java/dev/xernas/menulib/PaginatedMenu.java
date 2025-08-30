@@ -4,6 +4,7 @@ import dev.xernas.menulib.utils.InventorySize;
 import dev.xernas.menulib.utils.ItemBuilder;
 import dev.xernas.menulib.utils.ItemUtils;
 import dev.xernas.menulib.utils.StaticSlots;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -93,7 +94,7 @@ public abstract class PaginatedMenu extends Menu {
     public final @NotNull Map<Integer, ItemBuilder> getContent() {
         Map<Integer, ItemBuilder> map = new HashMap<>();
         for (Integer staticSlot : getStaticSlots()) {
-            map.put(staticSlot, new ItemBuilder(this, ItemUtils.createItem(" ", getBorderMaterial() == null ? Material.AIR : getBorderMaterial())));
+            map.put(staticSlot, new ItemBuilder(this, ItemUtils.createItem(Component.text(" "), getBorderMaterial() == null ? Material.AIR : getBorderMaterial())));
         }
         List<Integer> staticSlots = StaticSlots.removeRecurringIntegers(getStaticSlots(), getInventorySize().getSize());
         int maxItems = getInventorySize().getSize() - staticSlots.size();

@@ -1,6 +1,7 @@
 package dev.xernas.menulib.utils;
 
 import dev.xernas.menulib.Menu;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -17,9 +18,9 @@ public class MenuUtils {
 	 * @param name        The name to set
 	 * @return The ItemBuilder with the name set
 	 */
-	private static ItemBuilder itemBuilderSetName(ItemBuilder itemBuilder, String name) {
+	private static ItemBuilder itemBuilderSetName(ItemBuilder itemBuilder, Component name) {
 		ItemMeta itemMeta = itemBuilder.getItemMeta();
-		itemMeta.setDisplayName(name);
+		itemMeta.displayName(name);
 		itemBuilder.setItemMeta(itemMeta);
 		
 		return itemBuilder;

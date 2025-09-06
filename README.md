@@ -9,11 +9,24 @@ I recently made a wiki, [go check it out](https://github.com/Xernas78/menu-lib/w
 
 Add this to your `pom.xml`:
 ```xml
-<dependency>
-  <groupId>dev.xernas</groupId>
-  <artifactId>menulib</artifactId>
-  <version>1.3.0</version>
-</dependency>
+<repositories>
+  <!-- other repositories -->
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+  <!-- other repositories -->
+</repositories>
+
+<dependencies>
+  <!-- other dependencies -->
+  <dependency>
+    <groupId>com.github.Xernas78</groupId>
+    <artifactId>menu-lib</artifactId>
+    <version>1.3.6</version>
+  </dependency>
+  <!-- other dependencies -->
+</dependencies>
 ```
 then reload your Maven project or run `mvn install` command.
 
@@ -22,8 +35,12 @@ then reload your Maven project or run `mvn install` command.
 Add this to your `build.gradle`:
 
 ```groovy
+repositories {
+  maven { url 'https://jitpack.io' }
+}
+
 dependencies {
-    implementation 'dev.xernas:menulib:1.3.0'
+    implementation 'com.github.Xernas78:menu-lib:1.3.6'
 }
 ```
 then reload your Gradle project.

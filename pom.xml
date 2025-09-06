@@ -6,7 +6,7 @@
 
     <groupId>com.github.Xernas78</groupId>
     <artifactId>menu-lib</artifactId>
-    <version>1.3.4</version>
+    <version>1.3.6</version>
     <packaging>jar</packaging>
 
     <name>MenuLib</name>
@@ -30,8 +30,11 @@
     </licenses>
 
     <properties>
-        <java.version>17</java.version>
+        <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
 
     <build>
@@ -41,8 +44,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.13.0</version>
                 <configuration>
-                    <source>17</source>
-                    <target>17</target>
+                    <source>21</source>
+                    <target>21</target>
+                    <release>21</release>
                 </configuration>
             </plugin>
             <plugin>
